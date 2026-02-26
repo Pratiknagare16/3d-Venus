@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>NASA-Grade Neptune Visualization | 3D Interactive Ice Giant</title>
+  <meta name="description" content="Cinematic, physically realistic 3D Neptune visualization with smooth atmospheric bands, subtle dark storms, blue Fresnel glow, and real-time rotation." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    #app { width: 100%; height: 100%; }
+    #overlay {
+      position: fixed; top: 0; left: 0; width: 100%;
+      padding: 16px 24px;
+      color: rgba(220, 230, 255, 0.9);
+      font-size: 12px; font-weight: 300;
+      letter-spacing: 0.03em;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 60%, transparent 100%);
+      pointer-events: none; z-index: 10;
+    }
+    #overlay .title {
+      font-size: 14px; font-weight: 600;
+      color: #47b3ff;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    #overlay .subtitle { opacity: 0.7; }
+    #info-bar {
+      position: fixed; bottom: 0; left: 0; width: 100%;
+      padding: 12px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      color: rgba(180, 200, 230, 0.6);
+      font-size: 11px; font-weight: 300;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+      pointer-events: none; z-index: 10;
+    }
+    #utc-clock {
+      font-variant-numeric: tabular-nums;
+      color: rgba(71, 179, 255, 0.7);
+      font-weight: 400;
+    }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="overlay">
+    <div class="title">🔵 Neptune Visualization</div>
+    <div class="subtitle">Real-time 3D &middot; Orbit with mouse &middot; Scroll to zoom</div>
+  </div>
+  <div id="info-bar">
+    <span>Axial tilt 28.32° &middot; Rotation period ~16.1 hours &middot; Farthest planet from the Sun</span>
+    <span id="utc-clock"></span>
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+        "three/examples/jsm/controls/OrbitControls.js": "https://unpkg.com/three@0.161.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+  </script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
