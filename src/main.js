@@ -320,3 +320,35 @@ function onWindowResize() {
 }
 
 window.addEventListener("resize", onWindowResize);
+
+// ═════════════════════════════════════════════════════════
+//  NEPTUNE INFO PANEL
+// ═════════════════════════════════════════════════════════
+
+const neptuneBtn = document.getElementById("neptuneBtn");
+const neptunePanel = document.getElementById("neptunePanel");
+const closePanel = document.getElementById("closePanel");
+
+// Open panel
+neptuneBtn.addEventListener("click", () => {
+  neptunePanel.classList.add("visible");
+});
+
+// Close via ✕ button
+closePanel.addEventListener("click", () => {
+  neptunePanel.classList.remove("visible");
+});
+
+// Close via clicking outside the panel card
+neptunePanel.addEventListener("click", (e) => {
+  if (e.target === neptunePanel) {
+    neptunePanel.classList.remove("visible");
+  }
+});
+
+// Close via ESC key
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    neptunePanel.classList.remove("visible");
+  }
+});
